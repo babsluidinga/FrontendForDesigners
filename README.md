@@ -28,7 +28,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je storyboard:
-  <img src="readme-images/IMG_5929.jpg" width="375px" alt="storyboard voor opdracht 1">
+  <img src="readme-images/Storyboard.jpg" width="375px" alt="storyboard voor opdracht 1">
 
 
   ### Je ambitie: 
@@ -49,6 +49,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je uitkomst - karakteristiek screenshot(s):
+
   <img src="readme-images/SC-1.png" width="375px" alt="uitomst opdracht 1">
   <img src="readme-images/SC-3.png" width="375px" alt="uitomst opdracht 1">
 
