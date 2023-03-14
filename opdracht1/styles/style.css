@@ -1,0 +1,239 @@
+/* CSS Document */
+
+/*********/
+/* FONTS */
+/*********/
+@font-face {
+	font-family: 'Glypher';
+	src: url('../fonts/Glyphter.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family:AnimalesFantastic;
+    src: url("../fonts/AnimalesFantastic.ttf") format("truetype");
+}
+
+/**************/
+/* CSS REMEDY */
+/**************/
+*, *::after, *::before {
+  box-sizing:border-box;  
+}
+
+button:not[disabled], summary {
+	cursor: pointer;
+}
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+	/* startje */
+	--bg-image: url(../images/bg-image-light.jpeg);
+	--magic-color:#78aef6;
+	--font-gradient:url(../images/Gold-texture.jpeg);
+	--glow-cursor: url(../images/glow-blue.svg) 30 20, auto;
+}
+
+/*********************************************/
+/* custom properties aanpassen aan dark mode */
+/*********************************************/
+
+@media (prefers-color-scheme:dark) {
+	:root {
+		--bg-image: url(../images/bg-image-dark.png);
+		--magic-color: #00cd81;
+		--font-gradient:url(../images/Silver-texture.jpeg);
+		--glow-cursor: url(../images/Glow-Green.svg) 30 20, auto;
+	}
+}
+
+/*********************************/
+/* variabelen aanpassen na curse */
+/*********************************/
+:root.cursed{
+	--bg-image: url(../images/bg-image-dark.png);
+	--magic-color: #00cd81;
+	--font-gradient:url(../images/Silver-texture.jpeg);
+	--glow-cursor: url(../images/Glow-Green.svg) 30 20, auto;
+}
+
+html.cursed span:nth-of-type(4)::before{
+	animation: glow-exit 4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+/****************/
+/* JOUW STYLING */
+/****************/
+body {
+	overflow:hidden;
+	font-family:Glypher, sans-serif;
+	background-image:var(--bg-image);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: var(--glow-cursor);
+	transition: 5s ease-in-out;
+}
+
+h1{
+	font-size: min(10vw, 5em);
+	display:flex;
+	align-items: center;
+}
+
+
+h1 span{
+	display: inline-block;
+	background: var(--font-gradient);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	transition: 5s ease-in-out;
+	animation: floating 2.5s ease-in-out infinite;
+}
+
+button{
+	display: block;
+	position: absolute;
+	top: 70vh;
+	font-size: 1.5rem;
+	padding: 1rem 1rem .8rem;
+	letter-spacing: .05rem;
+	font-family: AnimalesFantastic, serif;
+	border-image: var(--font-gradient) 50 round;
+	border-width: .2em;
+	transition: 5s ease-in-out;
+	background: var(--font-gradient);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	cursor: var(--glow-cursor);
+	z-index: 2;
+}
+
+/* H */
+span:nth-of-type(1){
+	transform: scale(1.8) translate(13%, 7%);
+	animation-delay: .2s;
+
+}
+span:nth-of-type(2){
+	animation-delay: .6s;
+}
+/* W */
+span:nth-of-type(4){
+	transform: scale(1.9) translate(5%, -20%);
+	animation-delay: .4s;
+}
+
+span:nth-of-type(4)::before{
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: .1vw;
+	height: .1vw;
+	background: whitesmoke;
+	border-radius: 100%;
+	box-shadow: 
+	0 0 .6vw .5vw #fff,
+    0 0 1vw .9vw var(--magic-color),
+    0 0 2vw 1vw var(--magic-color);
+	transition: 5s ease-in-out;
+	z-index: 1;
+}
+
+/* A */
+span:nth-of-type(5){
+	transform: translate(2%);
+	z-index: -1;
+}
+/* R */
+span:nth-of-type(6){
+	transform: scale(2.08) translate(19%, 7%);
+	z-index: -1;
+	animation-delay: .6s;
+}
+/* T */
+span:nth-of-type(7){
+	transform: scale(.98) translate(-25%);
+	z-index: -1;
+	animation-delay: .4s;
+}
+/* S */
+span:nth-of-type(8){
+	transform: translate(-47%);
+	z-index: -1;
+	animation-delay: .2s;
+}
+
+/****************************/
+/* Let's start animating :) */
+/****************************/
+
+  /* Floating letters */
+
+  @keyframes floating {
+	0%{
+		margin-top: 0;
+	}
+	50%{
+		margin-top: -2.5%;
+	}
+	100%{
+		margin-top: 0;
+	}
+  }
+
+/* Glow transition */
+
+  @keyframes glow-exit {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	5%{
+		opacity: 0.8;
+	}
+	7%{
+		opacity: 1;
+	}
+	10%{
+		opacity: 0.8;
+		transform: scale(1);
+	}
+	40%{
+		transform: scale(200);
+		opacity: 0;
+	}
+	50%{
+		transform: scale(100);
+	}
+	80%{
+		transform: scale(1);
+		opacity: 0.8;
+	}
+	85%{
+		opacity: 1;
+	}
+	90%{
+		opacity: 0.8;
+	}
+	95%{
+		opacity: 1;
+	}
+	100%{
+		transform: scale(1);
+		opacity: 1;
+	}
+  }
+  
