@@ -4,17 +4,12 @@
 /* FONTS */
 /*********/
 @font-face {
-	font-family: 'eenfont';
-	src: url('../fonts/eenfont.woff2') format('woff2'),
-			 url('../fonts/eenfont.woff') format('woff');
+	font-family: 'FinkHeavy';
+	src: url('../fonts/FinkHeavy.ttf');
 	font-weight: normal;
 	font-style: normal;
 
 }
-
-
-
-
 
 /**************/
 /* CSS REMEDY */
@@ -28,30 +23,85 @@ button:not[disabled], summary {
 }
 
 
-
-
-
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
 	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
+	--background:#d1ecd9;
+	--bingoCardBG: #f6eee1;
+	--textColor:#f6eee1;
 }
-
-
-
-
 
 /****************/
 /* JOUW STYLING */
 /****************/
 body {
-  font-family:eenfont, sans-serif;
-  color:var(--color-text);
-  background-color:var(--color-background);
+  font-family:FinkHeavy, sans-serif;
+  background: var(--background);
+  background-size: cover;
+  color: var(--textColor);
 }
 
+body ul{
+	display: grid;
+	padding:1em;
+	margin:0 auto;
+	width: clamp(6em, 80vw, 30em);
+	height: clamp(6em, 80vw, 30em);
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-auto-flow: column;
+	gap:1.5em;
+	list-style-type: none;
+	background-color: var(--bingoCardBG);
+	border-radius: .5em;
+}
 /* jouw code */
 
+body ul li {
+	border-radius: 1em;
+	padding: 0;
+	position: relative;
+}
+
+ul li input{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	appearance: none;
+	margin: 0;
+	border-radius: 100%;
+	z-index: 100;
+}
+
+ul li input::after{
+	content:'';
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: aqua;
+	border-radius: 100%;
+}
+
+ul li input:checked::after{
+	opacity: .8;
+}
+
+
+ul li label{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	z-index: 0;
+}
+
+ul li label img{
+	width: 60%;
+	height: auto;
+}
