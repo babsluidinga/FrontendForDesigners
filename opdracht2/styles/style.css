@@ -31,6 +31,7 @@ button:not[disabled], summary {
 	--background:#d1ecd9;
 	--bingoCardBG: #f6eee1;
 	--textColor:#f6eee1;
+	--persoonlijkheidsKleur:#ffffff;
 }
 
 /****************/
@@ -46,7 +47,7 @@ body {
 body ul{
 	display: grid;
 	padding:1em;
-	margin:0 auto;
+	margin:10em auto;
 	width: clamp(6em, 80vw, 30em);
 	height: clamp(6em, 80vw, 30em);
 	grid-template-columns: repeat(5, 1fr);
@@ -59,6 +60,7 @@ body ul{
 }
 /* jouw code */
 
+/* Het stylen van de bingokaart */
 body ul li {
 	border-radius: 1em;
 	padding: 0;
@@ -75,6 +77,8 @@ ul li input{
 	z-index: 100;
 }
 
+/* Het stylen van het afvinken van een bingokaart. */
+
 ul li input::after{
 	content:'';
 	display: inline-block;
@@ -89,6 +93,7 @@ ul li input:checked::after{
 	opacity: .8;
 }
 
+/* de villagers in de bingokaart */
 
 ul li label{
 	display: flex;
@@ -104,4 +109,68 @@ ul li label{
 ul li label img{
 	width: 60%;
 	height: auto;
+}
+
+/* de ballen */
+ol{
+	list-style-type: none;
+	display: flex;
+	height: 10em;
+	position: absolute;
+	z-index: 10;
+	overflow: scroll;
+	width: 100vw;
+
+}
+ol li{
+	display: flex;
+	justify-content: center;
+	margin: 1em;
+	padding: 1em;
+	width: 6em;
+	height: 6em;
+	border-radius: 100%;
+	flex-shrink: 0;
+	background-color: var(--persoonlijkheidsKleur);
+}
+ol li img{
+	width: 100%;
+}
+
+/* Kleur van de bal verandert door persoonlijkheid villager */
+
+ol li.Smug{
+	--persoonlijkheidsKleur: #FEBDC3;
+}
+
+ol li.Peppy{
+	--persoonlijkheidsKleur: #F7D359;
+}
+
+ol li.Jock{
+	--persoonlijkheidsKleur: #FF7C68;
+}
+
+ol li.Normal{
+	--persoonlijkheidsKleur: #88C9A1;
+}
+
+ol li.Normal{
+	--persoonlijkheidsKleur: #88C9A1;
+}
+
+ol li.Lazy{
+	--persoonlijkheidsKleur: #017C74;
+}
+
+ol li.Uchi{
+	--persoonlijkheidsKleur: #515151;
+}
+
+ol li.Cranky{
+	--persoonlijkheidsKleur: #515151;
+}
+
+ol li.Snooty{
+	--persoonlijkheidsKleur: #515151;
 }

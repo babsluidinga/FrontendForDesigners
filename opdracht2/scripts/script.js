@@ -5,7 +5,7 @@ const endPoint = "villagers";
 const URL = baseURL + endPoint;
 let huidigeIndex = 0;
 const knop = document.querySelector('button');
-const ballenLijst = document.querySelector('ol li');
+const ballenLijst = document.querySelector('ol');
 
 // Het selecteren van het HTML element waar de Animal karakters in komen.
 const bingoBord = document.querySelector('ul');
@@ -73,10 +73,18 @@ haalVillagers()
 
 function toonVolgendGetal() {
     const volgendGetal = ballenVillagers[huidigeIndex];
-    console.log(volgendGetal);
-    ballenLijst.innerHTML = 
     
-    `<img src="${volgendGetal.icon_uri}" alt="${volgendGetal.name["name-USen"]}">`;
+    console.log(volgendGetal);
+
+    let balElement = 
+					`
+					<li class="${volgendGetal.personality}">
+              <img src="${volgendGetal.icon_uri}" alt="${volgendGetal.name["name-USen"]}">
+					</li>
+					`;
+
+    ballenLijst.insertAdjacentHTML('afterbegin', balElement);
+
 
     huidigeIndex++;              
   
