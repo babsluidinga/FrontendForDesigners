@@ -14,6 +14,12 @@ const bingoBord = document.querySelector('ul');
 let ballenVillagers = [];
 let bingokaartVillagers = [];
 
+// Aanmaken van variabelen om de bingoballen mee te kunnen verschuiven van positie.
+const ol = document.querySelector('ol');
+const li = document.querySelector('ol li');
+const vorigeKnop = document.querySelector('button:nth-of-type(2)');
+const volgendeKnop = document.querySelector('button:nth-of-type(3)');
+
 // Een functie om de villagers mee te kunnen shuffelen binnen een array
 /* bron https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array */
 function shuffle(array) {
@@ -34,6 +40,7 @@ function shuffle(array) {
 };
 
 function haalVillagers(){
+  // van Sanne, tijdens de les FFD over  API's
 	getData(URL).then( alleVillagers =>{
         // Het shuffelen van alle villagers en vervolgens de eerste 75 hiervan 
         // pakken en in de eerder aangemaakte variabele "ballenVillagers" stoppen
@@ -57,9 +64,9 @@ function opHetScherm(){
 		const villagerElement = 
 					`
 					<li>
-                        <input type="checkbox" name="bingo" id="${villager.name["name-USen"]}">
-                        <label for="${villager.name["name-USen"]}">
-                    <img src="${villager.icon_uri}" alt="${villager.name["name-USen"]}">
+                <input type="checkbox" name="bingo" class="checkbox" id="${villager.name["name-USen"]}">
+                <label for="${villager.name["name-USen"]}">
+                  <img src="${villager.icon_uri}" alt="${villager.name["name-USen"]}">
                 </label>
 					</li>
 					`;
@@ -67,24 +74,21 @@ function opHetScherm(){
 	})
 }
 
-haalVillagers()
-
 // Het trekken van een bingobal
 
 function toonVolgendGetal() {
-    const volgendGetal = ballenVillagers[huidigeIndex];
+    let VillagerOpBal = ballenVillagers[huidigeIndex];
     
-    console.log(volgendGetal);
+    console.log(VillagerOpBal);
 
     let balElement = 
 					`
-					<li class="${volgendGetal.personality}">
-              <img src="${volgendGetal.icon_uri}" alt="${volgendGetal.name["name-USen"]}">
+					<li class="${VillagerOpBal.personality}">
+              <img src="${VillagerOpBal.icon_uri}" alt="${VillagerOpBal.name["name-USen"]}">
 					</li>
 					`;
 
     ballenLijst.insertAdjacentHTML('afterbegin', balElement);
-
 
     huidigeIndex++;              
   
@@ -95,8 +99,38 @@ function toonVolgendGetal() {
   
 knop.addEventListener('click', toonVolgendGetal);
 
+haalVillagers();
+
+let huidigePositie = 0;
+
+vorigeKnop.addEventListener('click', () => {
+  huidigePositie -= 8;
+
+  ol.style.transform = `translateX(-${huidigePositie}em)`;
+  
+  ol.classList.remove('rolLinks');
+  ol.classList.remove('rolRechts');
+
+  setTimeout(() => {
+    ol.classList.add('rolLinks');
+  }, 10);
+});
+
+volgendeKnop.addEventListener('click', () => {
+  huidigePositie += 8;
+ 
+  ol.style.transform = `translateX(-${huidigePositie}em)`;
+
+  ol.classList.remove('rolLinks')
+  ol.classList.remove('rolRechts')
+  
+  setTimeout(() => {
+    ol.classList.add('rolRechts');
+  }, 10);
+});
 
 
+// van Sanne, tijdens de les FFD over  API's
 async function getData(URL) {
 	return (
 		fetch(URL)
@@ -104,4 +138,96 @@ async function getData(URL) {
 		.then ( jsonData => jsonData )
 	);
 }
+
+// // SPEACH
+// ^ Bron: https://codepen.io/shooft/pen/yLxzgzP
+
+/* de commando's */
+const commandos = ['bingo']; /* deze lijst kun je uitbreiden */
+const grammar = '#JSGF V1.0; grammar commandos; public <commando> = ' + commandos.join(' | ') + ' ;'
+
+/* de browser de benodigde dingen leren */
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+/* een lijstje maken van de grammer/commando's */
+const speechRecognitionList = new SpeechGrammarList();
+speechRecognitionList.addFromString(grammar, 1);
+
+/* het luisterobject aanmaken en de commando's en de taal leren */
+const recognition = new SpeechRecognition();
+recognition.grammars = speechRecognitionList;
+recognition.continuous = true;
+recognition.lang = 'nl';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+ /* als er tekst verstaan is */
+function spraakAfhandelen(event) {
+
+// de laatste tekst uit de results peuteren
+const lijstMetAlleResultaten = event.results;
+const indexVanHetLaatsteResultaat = lijstMetAlleResultaten.length - 1;
+const hetLaatsteResultaat = lijstMetAlleResultaten[indexVanHetLaatsteResultaat];
+
+let deTekstDieVerstaanIs = hetLaatsteResultaat[0].transcript;
+
+deTekstDieVerstaanIs = deTekstDieVerstaanIs.trim();
+deTekstDieVerstaanIs = deTekstDieVerstaanIs.toLowerCase();
+
+    if (deTekstDieVerstaanIs == "bingo") {
+        document.body.classList.add("bingo");
+
+        setTimeout( () => {
+           location.reload();
+        }, 20000);
+    }
+
+    console.log(deTekstDieVerstaanIs);
+}
+
+  /* het luisterobject laten luisteren */
+function luisteren() {
+    recognition.start();
+    console.log('Ready to receive a command.');
+ }
+
+ /* als er een woord herkent is - de functie starten */
+ recognition.onresult = event => {
+    spraakAfhandelen(event);
+ }
+
+ /* als het luisterobject er onverhoopt mee ophoudt - opnieuw starten met luisteren */
+ recognition.onend = () => {
+    luisteren();
+ }
+
+ /* na het laden van de pagina starten met luisteren */
+ luisteren()
+
+// function checkCheckboxesAndListen() {
+//   // console.log("checkCheckboxesAndListen() uitgevoerd");
+//   // console.log(checkboxes);
+
+//   // const checkboxes = document.querySelectorAll('li input[type="checkbox"]');
+//   let allChecked = true;
+
+//   checkboxes.forEach((checkbox) => {
+//     if (!checkbox.checked) {
+//       allChecked = false;
+//     }
+//   });
+
+//   if (allChecked) {
+//     luisteren();
+//   }
+// }
+
+// const checkboxes = document.querySelectorAll('.checkbox');
+// console.log(checkboxes);
+// checkboxes.forEach((checkbox) => {
+//   checkbox.addEventListener("change", checkCheckboxesAndListen);
+// });
+
 

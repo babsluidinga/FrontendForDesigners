@@ -5,9 +5,8 @@
 /*********/
 @font-face {
 	font-family: 'FinkHeavy';
-	src: url('../fonts/FinkHeavy.ttf');
-	font-weight: normal;
-	font-style: normal;
+	src: url('../fonts/FinkHeavy.woff') format('woff'),
+	     url('../fonts/FinkHeavy.woff2') format('woff2');
 
 }
 
@@ -28,43 +27,70 @@ button:not[disabled], summary {
 /*********************/
 :root {
 	/* startje */
-	--background:#d1ecd9;
-	--bingoCardBG: #f6eee1;
-	--textColor:#f6eee1;
+	--background:#FCF3EC;
+	--tekstKleur:#E8AA8B;
 	--persoonlijkheidsKleur:#ffffff;
+	--ficheKleur: #C4A7D3;
+	--borderKleur: #D6D3A5;
+	--bgIMG: url(../img/bg.jpeg);
 }
 
 /****************/
 /* JOUW STYLING */
 /****************/
+html{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 body {
-  font-family:FinkHeavy, sans-serif;
-  background: var(--background);
+  font-family:'FinkHeavy', sans-serif;
+  background-image: var(--bgIMG);
   background-size: cover;
-  color: var(--textColor);
+  color: var(--tekstKleur);
+  margin: 0;
+}
+
+h1{
+	font-size: 3em;
+	text-align: center;
 }
 
 body ul{
 	display: grid;
 	padding:1em;
-	margin:10em auto;
+	margin:1em auto 0;
 	width: clamp(6em, 80vw, 30em);
 	height: clamp(6em, 80vw, 30em);
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 	grid-auto-flow: column;
-	gap:1.5em;
+	gap:1em;
 	list-style-type: none;
-	background-color: var(--bingoCardBG);
 	border-radius: .5em;
+	border: .1em solid var(--borderKleur);
+	background-color: var(--background);
 }
 /* jouw code */
+
+/* Button styling! */
+button{
+	padding: 1em;
+}
+
+button:nth-of-type(1){
+	display: block;
+	margin: auto;
+	position: relative;
+}
 
 /* Het stylen van de bingokaart */
 body ul li {
 	border-radius: 1em;
 	padding: 0;
 	position: relative;
+	border: .1em solid var(--borderKleur);
 }
 
 ul li input{
@@ -85,12 +111,12 @@ ul li input::after{
 	width: 100%;
 	height: 100%;
 	opacity: 0;
-	background-color: aqua;
+	background-color: var(--ficheKleur);
 	border-radius: 100%;
 }
 
 ul li input:checked::after{
-	opacity: .8;
+	opacity: .6;
 }
 
 /* de villagers in de bingokaart */
@@ -112,19 +138,26 @@ ul li label img{
 }
 
 /* de ballen */
-ol{
+section{
+	width: 8em;
+	overflow: hidden;
+	position: relative;
+	margin: auto;
+	display: flex;
+}
+
+ol {
 	list-style-type: none;
 	display: flex;
-	height: 10em;
-	position: absolute;
-	z-index: 10;
-	overflow: scroll;
-	width: 100vw;
-
-}
-ol li{
-	display: flex;
-	justify-content: center;
+	height: 8em;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	justify-content: flex-start;
+	transition: .5s;
+  }
+  
+  ol li {
 	margin: 1em;
 	padding: 1em;
 	width: 6em;
@@ -132,45 +165,42 @@ ol li{
 	border-radius: 100%;
 	flex-shrink: 0;
 	background-color: var(--persoonlijkheidsKleur);
-}
+  }
+
+
 ol li img{
 	width: 100%;
 }
 
+ol.rolLinks li{
+	transform: rotate(360deg);
+	transition: .5s;
+}
+
+ol.rolRechts li{
+	transform: rotate(-360deg);
+	transition: .5s;
+}
+
 /* Kleur van de bal verandert door persoonlijkheid villager */
 
-ol li.Smug{
-	--persoonlijkheidsKleur: #FEBDC3;
+
+ol li.Peppy, ol li.Snooty{
+	--persoonlijkheidsKleur: #E8AA8B;
 }
 
-ol li.Peppy{
-	--persoonlijkheidsKleur: #F7D359;
+ol li.Jock, ol li.Smug{
+	--persoonlijkheidsKleur: #C4A7D3;
 }
 
-ol li.Jock{
-	--persoonlijkheidsKleur: #FF7C68;
+ol li.Normal, ol li.Lazy{
+	--persoonlijkheidsKleur: #E2918E;
 }
 
-ol li.Normal{
-	--persoonlijkheidsKleur: #88C9A1;
+ol li.Uchi, ol li.Cranky{
+	--persoonlijkheidsKleur: #A4D8C8;
 }
 
-ol li.Normal{
-	--persoonlijkheidsKleur: #88C9A1;
-}
-
-ol li.Lazy{
-	--persoonlijkheidsKleur: #017C74;
-}
-
-ol li.Uchi{
-	--persoonlijkheidsKleur: #515151;
-}
-
-ol li.Cranky{
-	--persoonlijkheidsKleur: #515151;
-}
-
-ol li.Snooty{
-	--persoonlijkheidsKleur: #515151;
+.bingo{
+	--bgIMG: url(../img/BG-Dark.png);
 }
