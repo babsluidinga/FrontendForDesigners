@@ -15,7 +15,6 @@ let ballenVillagers = [];
 let bingokaartVillagers = [];
 
 // Aanmaken van variabelen om de bingoballen mee te kunnen verschuiven van positie.
-const ol = document.querySelector('ol');
 const li = document.querySelector('ol li');
 const vorigeKnop = document.querySelector('button:nth-of-type(2)');
 const volgendeKnop = document.querySelector('button:nth-of-type(3)');
@@ -72,6 +71,11 @@ function opHetScherm(){
 					`;
     bingoBord.insertAdjacentHTML('beforeend', villagerElement);
 	})
+
+  const checkboxes = document.querySelectorAll('.checkbox');
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", checkCheckboxesAndListen);
+  });
 }
 
 // Het trekken van een bingobal
@@ -101,32 +105,52 @@ knop.addEventListener('click', toonVolgendGetal);
 
 haalVillagers();
 
+knop.addEventListener('click',() =>{if (document.querySelectorAll("ol li").length > 1){
+  vorigeKnop.disabled = false;}} )
+;
+
 let huidigePositie = 0;
 
 vorigeKnop.addEventListener('click', () => {
-  huidigePositie -= 8;
+  huidigePositie -= 1;
+  ballenLijst.style.setProperty("--pos", huidigePositie);
+  ballenLijst.classList.add('rolLinks');
+  const eersteBal = document.querySelector("ol li");
+  eersteBal.addEventListener("transitionend", () => {
+    ballenLijst.classList.remove('rolLinks');
+  })
 
-  ol.style.transform = `translateX(-${huidigePositie}em)`;
-  
-  ol.classList.remove('rolLinks');
-  ol.classList.remove('rolRechts');
+  if (document.querySelectorAll("ol li").length == -huidigePositie+1){
+    vorigeKnop.disabled = true;
+  }
+  else{
+    vorigeKnop.disabled = false;
+  }
 
-  setTimeout(() => {
-    ol.classList.add('rolLinks');
-  }, 10);
+  volgendeKnop.disabled = false;
 });
 
 volgendeKnop.addEventListener('click', () => {
-  huidigePositie += 8;
- 
-  ol.style.transform = `translateX(-${huidigePositie}em)`;
 
-  ol.classList.remove('rolLinks')
-  ol.classList.remove('rolRechts')
+  huidigePositie += 1;
+ 
+  ballenLijst.style.setProperty("--pos", huidigePositie);
   
-  setTimeout(() => {
-    ol.classList.add('rolRechts');
-  }, 10);
+  ballenLijst.classList.add('rolRechts');
+
+  const eersteBal = document.querySelector("ol li");
+
+  eersteBal.addEventListener("transitionend", () => {
+    ballenLijst.classList.remove('rolRechts');
+  })
+
+  if (-huidigePositie == 0){
+    volgendeKnop.disabled = true;
+  }
+  else{
+    vorigeKnop.disabled = false;
+  }
+
 });
 
 
@@ -204,30 +228,16 @@ function luisteren() {
  }
 
  /* na het laden van de pagina starten met luisteren */
- luisteren()
+//  luisteren()
 
-// function checkCheckboxesAndListen() {
-//   // console.log("checkCheckboxesAndListen() uitgevoerd");
-//   // console.log(checkboxes);
+function checkCheckboxesAndListen() {
+  const ungecheckteCheckboxes = document.querySelectorAll("li input[type='checkbox']:not(:checked)");
 
-//   // const checkboxes = document.querySelectorAll('li input[type="checkbox"]');
-//   let allChecked = true;
+  if (ungecheckteCheckboxes.length == 0){
+    luisteren();
+  }
+}
 
-//   checkboxes.forEach((checkbox) => {
-//     if (!checkbox.checked) {
-//       allChecked = false;
-//     }
-//   });
 
-//   if (allChecked) {
-//     luisteren();
-//   }
-// }
-
-// const checkboxes = document.querySelectorAll('.checkbox');
-// console.log(checkboxes);
-// checkboxes.forEach((checkbox) => {
-//   checkbox.addEventListener("change", checkCheckboxesAndListen);
-// });
 
 

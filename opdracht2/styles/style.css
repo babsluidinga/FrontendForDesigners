@@ -155,6 +155,8 @@ ol {
 	width: 100%;
 	justify-content: flex-start;
 	transition: .5s;
+
+	transform: translateX( calc( var(--pos, 0) * 8em) );
   }
   
   ol li {
@@ -173,12 +175,12 @@ ol li img{
 }
 
 ol.rolLinks li{
-	transform: rotate(360deg);
+	transform: rotate(-360deg);
 	transition: .5s;
 }
 
 ol.rolRechts li{
-	transform: rotate(-360deg);
+	transform: rotate(360deg);
 	transition: .5s;
 }
 
