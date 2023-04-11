@@ -16,8 +16,9 @@ let bingokaartVillagers = [];
 
 // Aanmaken van variabelen om de bingoballen mee te kunnen verschuiven van positie.
 const li = document.querySelector('ol li');
-const vorigeKnop = document.querySelector('button:nth-of-type(2)');
-const volgendeKnop = document.querySelector('button:nth-of-type(3)');
+
+const volgendeKnop = document.querySelector('section button:nth-of-type(1)');
+const vorigeKnop = document.querySelector('section button:nth-of-type(2)');
 
 // Een functie om de villagers mee te kunnen shuffelen binnen een array
 /* bron https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array */
@@ -94,10 +95,11 @@ function toonVolgendGetal() {
 
     ballenLijst.insertAdjacentHTML('afterbegin', balElement);
 
-    huidigeIndex++;              
+    huidigeIndex++;
   
     if (huidigeIndex === ballenVillagers.length) {
       knop.removeEventListener('click', toonVolgendGetal);
+      knop.disabled = true;
     }
   }
   
@@ -105,17 +107,39 @@ knop.addEventListener('click', toonVolgendGetal);
 
 haalVillagers();
 
-knop.addEventListener('click',() =>{if (document.querySelectorAll("ol li").length > 1){
-  vorigeKnop.disabled = false;}} )
-;
 
 let huidigePositie = 0;
+
+knop.addEventListener('click', () =>{
+  huidigePositie = 0;
+  ballenLijst.style.setProperty("--pos", huidigePositie);
+
+  const eersteBal = document.querySelector("ol li");
+  const tweedeBal = document.querySelector("ol li:nth-of-type(2)");
+
+  eersteBal.classList.add ('rolIn');
+  tweedeBal.classList.add ('rolOut');
+
+  eersteBal.addEventListener("transitionend", () =>{
+    eersteBal.classList.remove ('rolIn');
+    tweedeBal.classList.remove ('rolOut');
+
+  })
+
+  if (document.querySelectorAll("ol li").length > 1){
+    vorigeKnop.disabled = false;
+  };
+
+  volgendeKnop.disabled = true;
+
+});
 
 vorigeKnop.addEventListener('click', () => {
   huidigePositie -= 1;
   ballenLijst.style.setProperty("--pos", huidigePositie);
   ballenLijst.classList.add('rolLinks');
   const eersteBal = document.querySelector("ol li");
+
   eersteBal.addEventListener("transitionend", () => {
     ballenLijst.classList.remove('rolLinks');
   })
@@ -125,21 +149,19 @@ vorigeKnop.addEventListener('click', () => {
   }
   else{
     vorigeKnop.disabled = false;
+    volgendeKnop.disabled = false;
   }
 
-  volgendeKnop.disabled = false;
 });
+
 
 volgendeKnop.addEventListener('click', () => {
 
   huidigePositie += 1;
- 
   ballenLijst.style.setProperty("--pos", huidigePositie);
-  
   ballenLijst.classList.add('rolRechts');
-
   const eersteBal = document.querySelector("ol li");
-
+  
   eersteBal.addEventListener("transitionend", () => {
     ballenLijst.classList.remove('rolRechts');
   })
@@ -154,6 +176,7 @@ volgendeKnop.addEventListener('click', () => {
 });
 
 
+
 // van Sanne, tijdens de les FFD over  API's
 async function getData(URL) {
 	return (
@@ -164,7 +187,7 @@ async function getData(URL) {
 }
 
 // // SPEACH
-// ^ Bron: https://codepen.io/shooft/pen/yLxzgzP
+// Bron: https://codepen.io/shooft/pen/yLxzgzP
 
 /* de commando's */
 const commandos = ['bingo']; /* deze lijst kun je uitbreiden */

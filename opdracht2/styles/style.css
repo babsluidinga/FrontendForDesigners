@@ -18,7 +18,7 @@
 }
 
 button:not[disabled], summary {
-	cursor: pointer;
+	cursor: pointer; 
 }
 
 
@@ -29,7 +29,7 @@ button:not[disabled], summary {
 	/* startje */
 	--background:#FCF3EC;
 	--tekstKleur:#E8AA8B;
-	--persoonlijkheidsKleur:#ffffff;
+	--persoonlijkheidsKleur:rgb(255, 255, 255);
 	--ficheKleur: #C4A7D3;
 	--borderKleur: #D6D3A5;
 	--bgIMG: url(../img/bg.jpeg);
@@ -48,6 +48,7 @@ body {
   font-family:'FinkHeavy', sans-serif;
   background-image: var(--bgIMG);
   background-size: cover;
+  background-position: bottom right;
   color: var(--tekstKleur);
   margin: 0;
 }
@@ -59,16 +60,16 @@ h1{
 
 body ul{
 	display: grid;
-	padding:1em;
+	padding:clamp(.2em, 5%, .5em);
 	margin:1em auto 0;
 	width: clamp(6em, 80vw, 30em);
 	height: clamp(6em, 80vw, 30em);
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 	grid-auto-flow: column;
-	gap:1em;
+	gap:clamp(.2em, 5%, .5em);
 	list-style-type: none;
-	border-radius: .5em;
+	border-radius: 5%;
 	border: .1em solid var(--borderKleur);
 	background-color: var(--background);
 }
@@ -77,17 +78,58 @@ body ul{
 /* Button styling! */
 button{
 	padding: 1em;
+	cursor: pointer;
+}
+
+body>button{
+	all:unset;
+	background-image: url(../img/old-wooden-texture-cover-from-planks-ui-game-background-seamless-pattern-cartoon-style_191307-879.jpg\ copy.png);
+	background-size: cover;
+	color: var(--background);
+	cursor: pointer;
+	border-radius: 10%;;
+}
+
+body>button:not(:disabled):hover{
+	transform: scale(.95);
 }
 
 button:nth-of-type(1){
 	display: block;
 	margin: auto;
 	position: relative;
+	padding: 1em;
 }
+
+section button:nth-of-type(1), section button:nth-of-type(2){
+	all:unset;
+	width: 5em;
+	transition: .1s;
+	cursor: pointer;
+}
+
+section button:nth-of-type(2){
+	transform: scaleX(-1);
+}
+
+button img{
+	width: 100%;
+	height: 100%;
+}
+
+button:disabled{
+	opacity: .6 !important;
+	cursor: not-allowed !important;
+}
+
+section button:not(:disabled):hover img{
+	padding: .2em;
+}
+
 
 /* Het stylen van de bingokaart */
 body ul li {
-	border-radius: 1em;
+	border-radius: 20%;
 	padding: 0;
 	position: relative;
 	border: .1em solid var(--borderKleur);
@@ -101,6 +143,7 @@ ul li input{
 	margin: 0;
 	border-radius: 100%;
 	z-index: 100;
+	cursor: pointer;
 }
 
 /* Het stylen van het afvinken van een bingokaart. */
@@ -133,16 +176,22 @@ ul li label{
 }
 
 ul li label img{
-	width: 60%;
+	width: 70%;
 	height: auto;
 }
 
 /* de ballen */
 section{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+article{
 	width: 8em;
 	overflow: hidden;
 	position: relative;
-	margin: auto;
+	margin: 1em 3em;
 	display: flex;
 }
 
@@ -154,12 +203,12 @@ ol {
 	margin: 0;
 	width: 100%;
 	justify-content: flex-start;
-	transition: .5s;
-
+	transition: 1s;
+	transition-timing-function: ease-in-out;
 	transform: translateX( calc( var(--pos, 0) * 8em) );
   }
   
-  ol li {
+ol li {
 	margin: 1em;
 	padding: 1em;
 	width: 6em;
@@ -169,6 +218,13 @@ ol {
 	background-color: var(--persoonlijkheidsKleur);
   }
 
+ol li.rolIn{
+	animation: rolIn 1s ease-in-out;
+}
+
+ol li.rolOut{
+	animation: rolOut 1s ease-in-out;
+}
 
 ol li img{
 	width: 100%;
@@ -176,31 +232,53 @@ ol li img{
 
 ol.rolLinks li{
 	transform: rotate(-360deg);
-	transition: .5s;
+	transition: 1s;
+	transition-timing-function: ease-in-out;
 }
+
 
 ol.rolRechts li{
 	transform: rotate(360deg);
-	transition: .5s;
+	transition: 1s;
+	transition-timing-function: ease-in-out;
+}
+
+@keyframes rolIn {
+	0%{
+		transform:translateX(-8em) rotate(-360deg);
+	}
+	100%{
+		transform:translateX(0) rotate(0deg);
+	}
+	
+}
+
+@keyframes rolOut {
+	0%{
+		transform:translateX(-8em) rotate(0deg);
+	}
+	100%{
+		transform:translateX(0) rotate(360deg);
+	}
+	
 }
 
 /* Kleur van de bal verandert door persoonlijkheid villager */
 
 
 ol li.Peppy, ol li.Snooty{
-	--persoonlijkheidsKleur: #E8AA8B;
+	--persoonlijkheidsKleur: rgb(232, 170, 139);
 }
 
 ol li.Jock, ol li.Smug{
-	--persoonlijkheidsKleur: #C4A7D3;
-}
+	--persoonlijkheidsKleur: rgb(196, 167, 211);}
 
 ol li.Normal, ol li.Lazy{
-	--persoonlijkheidsKleur: #E2918E;
+	--persoonlijkheidsKleur: rgb(226, 145, 142);
 }
 
 ol li.Uchi, ol li.Cranky{
-	--persoonlijkheidsKleur: #A4D8C8;
+	--persoonlijkheidsKleur: rgb(164, 216, 200);
 }
 
 .bingo{
