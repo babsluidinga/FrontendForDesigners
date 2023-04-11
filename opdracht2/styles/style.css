@@ -63,8 +63,6 @@ button:not[disabled], summary {
 
 html{
   height: 100vh;
-  width: 100vw;
-  overflow: hidden;
 }
 
 body {
