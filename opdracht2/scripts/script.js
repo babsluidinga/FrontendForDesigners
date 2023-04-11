@@ -6,6 +6,9 @@ const URL = baseURL + endPoint;
 let huidigeIndex = 0;
 const knop = document.querySelector('button');
 const ballenLijst = document.querySelector('ol');
+const bingoKnop = document.querySelector('body>button:last-of-type');
+const opnieuwKnop = document.querySelector('body>article button');
+const popUp = document.querySelector('body>article');
 
 // Het selecteren van het HTML element waar de Animal karakters in komen.
 const bingoBord = document.querySelector('ul');
@@ -175,8 +178,6 @@ volgendeKnop.addEventListener('click', () => {
 
 });
 
-
-
 // van Sanne, tijdens de les FFD over  API's
 async function getData(URL) {
 	return (
@@ -224,11 +225,12 @@ deTekstDieVerstaanIs = deTekstDieVerstaanIs.trim();
 deTekstDieVerstaanIs = deTekstDieVerstaanIs.toLowerCase();
 
     if (deTekstDieVerstaanIs == "bingo") {
-        document.body.classList.add("bingo");
+      feestje();
+      popUp.classList.add('popped');
 
-        setTimeout( () => {
-           location.reload();
-        }, 20000);
+      setTimeout( () => {
+           ocation.reload();
+      }, 10000);
     }
 
     console.log(deTekstDieVerstaanIs);
@@ -257,10 +259,28 @@ function checkCheckboxesAndListen() {
   const ungecheckteCheckboxes = document.querySelectorAll("li input[type='checkbox']:not(:checked)");
 
   if (ungecheckteCheckboxes.length == 0){
+    bingoKnop.disabled = false;
     luisteren();
   }
 }
 
+// een reset pagina knop om het spel opnieuw te starten na bingo
+opnieuwKnop.addEventListener('click', () =>{
+  location.reload();
+})
 
+// https://www.npmjs.com/package/js-confetti
 
+bingoKnop.addEventListener('click',feestje);
 
+function feestje() {
+  
+  popUp.classList.add('popped');
+
+  const jsConfetti = new JSConfetti()
+  jsConfetti.addConfetti({
+    confettiRadius: 5,
+    confettiNumber: 1000,
+  })
+
+};

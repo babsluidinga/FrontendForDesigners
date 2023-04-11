@@ -9,25 +9,32 @@
 	<title>Opdracht 2: Interactie galore - Frontend voor Designers</title>
 	
 	<link href="styles/style.css" rel="stylesheet">
+
+	<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 </head>
 
 <body>
 	<h1>Animal crossing bingo</h1>
-	<button>Nieuwe bal</button>
+	<button name="Nieuwe bal">Nieuwe bal</button>
+	<button name="BINGO!" disabled>BINGO!</button>
 	<section>
-		<button disabled>
+		<button name="linkerPijl" disabled>
 			<img src="img/arrow.svg" alt="image of an arrow, serving as a button.">
 		</button>
 		<article>
 			<ol>
 			</ol>
 		</article>
-		<button disabled>
+		<button name="rechterPijl" disabled>
 			<img src="img/arrow.svg" alt="image of an arrow, serving as a button.">
 		</button>
 	</section>
 	<ul>
 	</ul>
+	<article>
+		<h2>YAYYYY! Je hebt bingo! Goed gedaan!!</h2>
+		<button>Opnieuw beginnen</button>
+	</article>
 	<script defer src="scripts/script.js"></script>
 </body>
 	

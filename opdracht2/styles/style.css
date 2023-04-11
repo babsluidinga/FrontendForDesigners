@@ -35,9 +35,32 @@ button:not[disabled], summary {
 	--bgIMG: url(../img/bg.jpeg);
 }
 
+@media (prefers-color-scheme:dark){
+	:root{
+	--background:#6171a9;
+	--tekstKleur:#FCF3EC;
+	}
+
+	body{
+		background: var(--bgIMG) var(--background);
+		background-blend-mode: multiply;
+	}
+
+	button{
+		color: var(--tekstKleur) !important;
+	}
+	h2{
+		color: var(--background);
+	}
+}
+
 /****************/
 /* JOUW STYLING */
 /****************/
+:focus-visible{
+	outline: 2px solid var(--ficheKleur) !important;
+}
+
 html{
   height: 100vh;
   width: 100vw;
@@ -51,12 +74,20 @@ body {
   background-position: bottom right;
   color: var(--tekstKleur);
   margin: 0;
+  text-align: center;
 }
 
 h1{
-	font-size: 3em;
+	font-size: clamp(.5em, 10vw, 3em);
 	text-align: center;
 }
+
+h2{
+	font-size: clamp(.5em, 10vw, 2.5em);
+	margin: 1em;
+}
+
+/* De bingokaart */
 
 body ul{
 	display: grid;
@@ -76,34 +107,30 @@ body ul{
 /* jouw code */
 
 /* Button styling! */
-button{
-	padding: 1em;
-	cursor: pointer;
-}
 
-body>button{
+button{
 	all:unset;
 	background-image: url(../img/old-wooden-texture-cover-from-planks-ui-game-background-seamless-pattern-cartoon-style_191307-879.jpg\ copy.png);
 	background-size: cover;
 	color: var(--background);
 	cursor: pointer;
-	border-radius: 10%;;
-}
-
-body>button:not(:disabled):hover{
-	transform: scale(.95);
-}
-
-button:nth-of-type(1){
-	display: block;
-	margin: auto;
-	position: relative;
+	border-radius: 10%;
+	display: inline-block;
 	padding: 1em;
+	margin: 0 1em;
+	padding: 1em;
+	cursor: pointer;
+	max-height: 1em;
+	max-width: 8em;
+}
+
+body>button:not(:disabled):hover, body>article button:not(:disabled):hover{
+	transform: scale(.95);
 }
 
 section button:nth-of-type(1), section button:nth-of-type(2){
 	all:unset;
-	width: 5em;
+	width: clamp(4em, 5vw, 5em);
 	transition: .1s;
 	cursor: pointer;
 }
@@ -180,6 +207,36 @@ ul li label img{
 	height: auto;
 }
 
+/* De BingoPOPUP */
+body>article{
+	position: absolute;
+	display: flex;
+	top: 50%;
+  	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: clamp(4em, 80vw, 50em);
+	height: clamp(4em, 50vh, 20em);
+	background-color: var(--persoonlijkheidsKleur);
+ 	margin: 0;
+ 	z-index: 100;
+  	border-radius: 1vw;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+	transition: .2s ease-out;
+}
+
+body>article button{
+	margin: 1em;
+}
+
+/* Popped-up */
+body>article.popped{
+	transform: translate(-50%, -50%) scale(1);
+}
+
+
 /* de ballen */
 section{
 	display: flex;
@@ -217,6 +274,8 @@ ol li {
 	flex-shrink: 0;
 	background-color: var(--persoonlijkheidsKleur);
   }
+
+/* de ballenanimaties  */
 
 ol li.rolIn{
 	animation: rolIn 1s ease-in-out;

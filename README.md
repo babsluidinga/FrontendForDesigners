@@ -75,15 +75,15 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je ontwerp:
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="ontwerp opdracht 2">
+  <img src="readme-images/Opzet.svg" width="500px" alt="ontwerp opdracht 2">
 
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  - Het koppelen van een API
+  - Javascript skills
+  - Passende animaties kunnen maken
+  - Voice interaction
 </details>
 
 
@@ -98,18 +98,20 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Bevinding 1:
-  Omschrijving van wat er nog niet orde was (tekst en afbeeding(en)).
+  Op het moment dat je op 'nieuwe bal' klikte, ging je maar 1 plekje terug in de lijst, en niet naar de positie waar de nieuwe bal stond (afbeelding is niet echt te maken hiervan?).
 
   #### oplossing:
-  Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het zou oplossen (tekst en afbeeding(en)).
-
+  Ik heb in de Javascript toegevoegd dat de variabele 'huidigepositie' 0 moet worden op het moment dat er op de nieuwe bal knop wordt geklikt. Hierdoor kun je nu gemakkelijk terug naar de nieuwste bal, in plaats van door alle ballen heen te navigeren.
 
 
   ### Bevinding 2:
-  Omschrijving van wat er nog niet orde was (tekst en afbeeding(en)).
+  Door te moeten scrollen tussen de ballen werd het erg onoverzichtelijk en rommelig.
+  <img src="readme-images/bevinding2.png" width="500px" alt="Bevinding 2">
 
   #### oplossing:
-  Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het zou oplossen (tekst en afbeeding(en)).
+  Ik heb voor knoppen met pijltjes gekozen. Op deze manier krijg je nu standaard de nieuwste bal te zien, maak kun je door middel van pijltjes ook de vorige getrokken ballen zien. Wat ik nog had willen doen is het maken van een uitklapbaar veld waar je de gehele lijst kon zien van de getrokken villagers, zodat het ook makkelijk in een overzicht te zien zou zijn. 
+  
+   <img src="readme-images/Oplossing2.png" width="500px" alt="Oplossing 2">
 
 
 
