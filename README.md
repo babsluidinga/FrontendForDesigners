@@ -165,12 +165,12 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   Ik vind het heel leuk dat het bingo roepen gelukt is, waarnaar zich een klein feest op je scherm afspeelt. Ook de manier waarop de villagers uit de API worden gehaald vind ik super tof en creatief. De interacte op het scherm, met de draaiende ballen vind ik ook goed geslaagd. En tot slot het toevoegen van de dark mode, door middle van een background blend mode vind ik echt dat het eruit ziet alsof je het spel in de avond aan het spelen bent!
 
   <img src="readme-images/Feest.png" width="300px" alt="top">
-  <img src="readme-images/Draaiend" width="300px" alt="top">
-   <img src="readme-images/dark" width="300px" alt="top">
+  <img src="readme-images/Draaiend.png" width="300px" alt="top">
+   <img src="readme-images/dark.png" width="300px" alt="top">
 
 
   ### Dit was lastig/Is niet gelukt:
   Ik had nog quotes willen toevoegen van de villagers, daarnaast vind ik het jammer dat ik het niet voor elkaar heb kunnen krijgen om mijn bingospel echt te kunnen valideren, een valse bingo is stiekem iets te gemakkelijk gemaakt voor de gebruiker. Maarja, je kunt niet alles hebben. Ik ben over het algemeen heel trots op wat ik heb neergezet in 4 weken tijd, dit is niet iets wat ik dacht te kunnen!
 
-  <img src="readme-images/finalfinal.png" width="375px" alt="bummer">
+  <img src="readme-images/FinalFinal.png" width="375px" alt="bummer">
 </details>
