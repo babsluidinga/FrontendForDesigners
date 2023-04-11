@@ -106,17 +106,47 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   ### Bevinding 2:
   Door te moeten scrollen tussen de ballen werd het erg onoverzichtelijk en rommelig.
+
   <img src="readme-images/bevinding2.png" width="500px" alt="Bevinding 2">
 
   #### oplossing:
   Ik heb voor knoppen met pijltjes gekozen. Op deze manier krijg je nu standaard de nieuwste bal te zien, maak kun je door middel van pijltjes ook de vorige getrokken ballen zien. Wat ik nog had willen doen is het maken van een uitklapbaar veld waar je de gehele lijst kon zien van de getrokken villagers, zodat het ook makkelijk in een overzicht te zien zou zijn. 
-  
+
    <img src="readme-images/Oplossing2.png" width="500px" alt="Oplossing 2">
 
 
 
   ### Bevinding 3:
-  ...
+  De styling was erg chaotisch en het animal crossing gevoel kwam niet over. De tester had ook niet helemaal door dat het Animal Crossing was. 
+
+   <img src="readme-images/Bevinding3.png" width="500px" alt="Bevinding 3">
+
+  #### oplossing:
+  Door een nieuwe styling aan te maken, met kleuren die ik uit het animal crossing thema heb gehaald, heb ik gezorgd voor de island vibes die animal corssing heeft, samen met het schattige van wat de gehele game als look en feel heeft.
+
+   <img src="readme-images/Step2.png" width="500px" alt="Oplossing 3">
+
+
+  ### Bevinding 4:
+  Het was onduidelijk dat het een bingokaart was, er waren niet echt vakjes aangegeven.
+
+   <img src="readme-images/Bevinding3.png" width="500px" alt="Bevinding 4">
+
+  #### oplossing:
+  Door borders om de bingovakjes te doen krijg je nu al veel meer het gevoel dat je bingo aan het spelen bent.
+
+   <img src="readme-images/Step2.png" width="500px" alt="Oplossing 4">
+
+
+  ### Bevinding 5:
+  De gebruiker kon niet laten merken dat er bingo was, ook was het niet duidelijk dat je bingo kon roepen.
+
+   <img src="readme-images/Step2.png" width="500px" alt="Bevinding 5">
+
+  #### oplossing:
+  Ik heb de knop 'BINGO' toegevoegd, deze wordt geactiverd zodra alle vakjes aangevinkt zijn. Het enige wat ik niet heb kunnen doen door tijdsgebrek was nog een creatieve manier bedenken om te laten weten dat je bingo hebt. Vandaar dat ik onder de titel een simpele tekst heb geschreven om dit duidelijk te maken.
+
+   <img src="readme-images/Final.png" width="500px" alt="Oplossing 5">   
 </details>
 
 
@@ -127,17 +157,20 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <summary>uitwerken bij afronden opdracht (voor week 8)</summary>
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitkomst opdracht 2">
+  <img src="readme-images/FinalFinal.png" width="500px" alt="uitkomst opdracht 2">
 
+  De uitkomst van deze tweede opdracht is een bingospel met Animal Crossing karakters. Het spel is geen twee keer hetzelfde, aangezien ik telkens 75 random karakters uit de AnimalCrossing API haal. 
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Ik vind het heel leuk dat het bingo roepen gelukt is, waarnaar zich een klein feest op je scherm afspeelt. Ook de manier waarop de villagers uit de API worden gehaald vind ik super tof en creatief. De interacte op het scherm, met de draaiende ballen vind ik ook goed geslaagd. En tot slot het toevoegen van de dark mode, door middle van een background blend mode vind ik echt dat het eruit ziet alsof je het spel in de avond aan het spelen bent!
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+  <img src="readme-images/Feest.png" width="300px" alt="top">
+  <img src="readme-images/Draaiend" width="300px" alt="top">
+   <img src="readme-images/dark" width="300px" alt="top">
 
 
   ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
+  Ik had nog quotes willen toevoegen van de villagers, daarnaast vind ik het jammer dat ik het niet voor elkaar heb kunnen krijgen om mijn bingospel echt te kunnen valideren, een valse bingo is stiekem iets te gemakkelijk gemaakt voor de gebruiker. Maarja, je kunt niet alles hebben. Ik ben over het algemeen heel trots op wat ik heb neergezet in 4 weken tijd, dit is niet iets wat ik dacht te kunnen!
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  <img src="readme-images/finalfinal.png" width="375px" alt="bummer">
 </details>
